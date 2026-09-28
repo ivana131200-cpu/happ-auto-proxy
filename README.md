@@ -1,5 +1,21 @@
 # 🚀 Happ Proxy Auto-Update System
 
+## 🔗 Актуальная подписка
+
+```
+happ://crypt5/fzvdwsn5PkIjz3LwMBfDKHwF20E9Lj8vUCb5VpajG7UURIB7M3UPOsmI4g5hhYq540OOV4SkFZwjh9/IhNLVkhsfO0sBz6rKyoeyOpLxYPDT+SBU+wzmDgd5M13aDmT4goBKsAx4wbhLWk4ap664t+2Mg86mKFBwsrkIpYlUKieS5EEbFrb6LBFykb27eL6dfHjRPZgmjaTdg0U1Ygy4fFHrLFwmFlYxxhDVqBoEg3DKChn6oarqaTkojZbroDqHwp/uohX/3W8O9V/gU4p5rpa2jiSLKhK+onT11LnX/MUn4ftgtrR99jKndtlIgHAd4UVwBKWj6Yryc8NhlZ8ZurxBceXZlb/38kXNTA70L9ZaDhRVOd32SMasmZREiPXYmp7a2j1vgNfHvG6vMTBK5yOoyC3SO6nvgBNVfCDAPJg6ye051aMI93rWPQtJQDblNZH4WGOAZZla2Up6Y2CZOyJwEKth7VVF8D7J6hlV3OXLJJHBtt4G4GC0sF/QiWCOavyM2VyRYko0zy9jnmrUni6ia1219ll0agjgqmsAKZyblzjqX4i09O1Ww7fp7VSNRHb1RhZNPK0iCHnDEGLamOmjR6urSX7Mz/ucrR9M2qYi6Oy3dDvncwQ58QCk6yQwJ0mKmgCFZ+1R1DhmkNbBm/ZMl5SH/6+tXp7TMoHrG8nGF3YAVF9EyoO0SLNhqV/Mj5rpZkdaciXyTGKg6AQbaW2XAfufhOKrX2A75hpCjhrowkp26jAt3Em5csTlHOdeVx3sjoEY00vMADOYVRkoS9nmacMYGUspQR0zq5dmiJBTM73/XJVMwnXJMJTYVXYsHL/06lD9d/U0aCHxF5xK2HEZlK8duuqjNqSalnEfvexIebSCTygVmjvHjLnbhtN+lMpRWX17+ybkac5B4sVBFhHafoE=ff'}
+```
+
+**Последнее обновление:** 2026-09-28 14:57:52 UTC
+
+### Как использовать:
+1. Скопируйте ссылку выше
+2. Откройте приложение Happ
+3. Добавьте подписку через эту ссылку
+4. Серверы будут обновляться автоматически!
+
+---
+
 **Полностью автономная, бесплатная и самообновляющаяся система генерации happ:// ссылок для Happ Proxy клиента.**
 
 Работает 100% на бесплатной GitHub инфраструктуре без необходимости в VPS или выделенном сервере.
