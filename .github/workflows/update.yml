@@ -1,0 +1,99 @@
+name: Auto Update Happ Subscription
+
+on:
+  # Автоматический запуск каждые 6 часов
+  schedule:
+    - cron: '0 */6 * * *'  # Каждые 6 часов в 00 минут
+  
+  # Ручной запуск через GitHub Actions UI
+  workflow_dispatch:
+  
+  # Запуск при push в main (опционально)
+  push:
+    branches:
+      - main
+    paths:
+      - 'main.py'
+      - '.github/workflows/update.yml'
+
+jobs:
+  update-subscription:
+    runs-on: ubuntu-latest
+    
+    # Разрешения для записи в репозиторий (для обновления README)
+    permissions:
+      contents: write
+    
+    steps:
+      # 1. Клонирование репозитория
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      
+      # 2. Настройка Python окружения
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      # 3. Установка зависимостей
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      # 4. Запуск скрипта обновления
+      - name: 🚀 Run update script
+        env:
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+        run: |
+          python main.py
+      
+      # 5. Коммит и push обновленного README (если изменился)
+      - name: 💾 Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Проверяем наличие изменений
+          if [ -n "$(git status --porcelain)" ]; then
+            git add README.md HAPP_LINK.txt 2>/dev/null || true
+            git commit -m "🔄 Auto-update: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" || exit 0
+            git push
+            echo "✅ Changes committed and pushed"
+          else
+            echo "ℹ️  No changes to commit"
+          fi
+      
+      # 6. Отображение результата в логах
+      - name: 📊 Display result
+        if: always()
+        run: |
+          echo "=================================================="
+          echo "           SUBSCRIPTION UPDATE REPORT"
+          echo "=================================================="
+          if [ -f "HAPP_LINK.txt" ]; then
+            echo ""
+            echo "✅ Happ link generated successfully:"
+            echo ""
+            cat HAPP_LINK.txt
+            echo ""
+            echo "=================================================="
+          else
+            echo "❌ Failed to generate happ link"
+          fi
+      
+      # 7. Уведомление при ошибке (опционально)
+      - name: 🚨 Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Workflow failed! Check the logs above for details."
+          echo "Common issues:"
+          echo "  1. GIST_TOKEN not set or expired"
+          echo "  2. Network timeout when fetching proxies"
+          echo "  3. All proxy sources are unavailable"
+          echo ""
+          echo "Please check GitHub Secrets and proxy sources."
